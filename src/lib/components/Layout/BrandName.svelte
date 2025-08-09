@@ -8,4 +8,4 @@
 	}: { defultclass?: string; defultEclass?: string; className?: string } = $props();
 </script>
 
-<span class={cn(defultclass, className)}>ATS <span class={cn(defultEclass)}>È</span> MEDICA</span>
+<span class={cn(defultclass, className)}>ATS<span class={cn(defultEclass)}>È</span>MEDICA</span>

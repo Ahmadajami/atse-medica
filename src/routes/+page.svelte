@@ -50,7 +50,7 @@
 			<BrandName defultclass="text-4xl leading-tight font-bold md:text-5xl" />
 		</h1>
 		<p class=" text-3xl">
-			Where Your <span class="text-primary">Smile</span> Glow
+			Where Your <span class="text-primary">Smile</span> Glows
 		</p>
 
 		<div class="group relative container mt-5 gap-3">
@@ -70,7 +70,7 @@
 </section>
 
 <section class="mx-auto flex max-w-7xl flex-col space-y-8">
-	<h2 class="mx-4 w-fit text-5xl text-wrap md:mx-0">
+	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0">
 		Our Comprehensive <span class="text-primary">Services</span>
 		<hr class="w-full bg-primary" />
 	</h2>
@@ -82,7 +82,7 @@
 			<div
 				class=" absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Hollywood Smile
+				Dental implants
 			</div>
 		</div>
 
@@ -93,7 +93,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Skin Care
+				Aesthetic Dentistry
 			</div>
 		</div>
 
@@ -104,7 +104,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Toothe Correction
+				Tooth Correction
 			</div>
 		</div>
 
@@ -115,7 +115,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Dental implants
+				Skin Care
 			</div>
 		</div>
 	</div>
