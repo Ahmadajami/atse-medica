@@ -4,16 +4,34 @@
 	import LoaderPinwheel from '@lucide/svelte/icons/loader-pinwheel';
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import Vedio from '$lib/components/Vedio.svelte';
+	import { getLocale } from '$lib/paraglide/runtime';
+	import hero from '$lib/assets/wating_room.webp';
+	import hero2 from '$lib/assets/wating_room_second.webp';
+
+	let images = $state([hero, hero2]); // Array of image sources
+	let currentIndex = $state(0);
+	let src = $derived(images[currentIndex]);
+	let intervalId;
+	$effect(() => {
+		intervalId = setInterval(() => {
+			currentIndex = (currentIndex + 1) % images.length;
+			src = images[currentIndex];
+		}, 2000);
+	});
+
 	let imageLoaded = $state(false);
 
 	function handleImageLoad() {
 		imageLoaded = true;
 	}
 	const grid_image: string = 'https://picsum.photos/400/300';
+	let isArabic = $state(getLocale() === 'ar');
 
 	// è is È.
-	//
-	//"   "
+
+	function translate(word: string, t: string) {
+		return isArabic ? t : word;
+	}
 </script>
 
 <section
@@ -29,14 +47,13 @@
 		{#if !imageLoaded}
 			<div class="absolute inset-0 flex items-center justify-center space-x-2">
 				<LoaderPinwheel class="animate-spin text-primary duration-300 ease-in-out" />
-				<span>Image Loading</span>
+				<span>{isArabic ? 'تحميل الصورة' : 'Image Loading'}</span>
 			</div>
 		{/if}
 		<img
-			onload={handleImageLoad}
-			src="https://picsum.photos/800/560"
-			alt="Descriptive alt text"
-			class="absolute inset-0 h-full w-full rounded-xl object-cover"
+			{src}
+			alt="Atse Medica Center"
+			class="absolute inset-0 h-full w-full animate-in rounded-xl object-cover duration-700 fade-in-90"
 		/>
 	</div>
 
@@ -47,10 +64,12 @@
 		]}
 	>
 		<h1>
-			<BrandName defultclass="text-4xl leading-tight font-bold md:text-5xl" />
+			<BrandName defultclass="text-4xl leading-tight font-bold md:text-5xl" bind:isArabic />
 		</h1>
 		<p class=" text-3xl">
-			Where Your <span class="text-primary">Smile</span> Glows
+			{isArabic ? 'حيث' : 'Where Your'}
+			<span class="text-primary">{isArabic ? 'الإبتسامة' : 'Smile'}</span>
+			{translate('Glows', 'تشرق')}
 		</p>
 
 		<div class="group relative container mt-5 gap-3">
@@ -59,7 +78,9 @@
 				href="#"
 				variant="secondary"
 			>
-				<span class="text-left text-2xl group-hover:animate-bounce">Reserve Now</span>
+				<span class="text-left text-2xl group-hover:animate-bounce"
+					>{translate('Reserve Now', 'احجز الأن')}</span
+				>
 				<CalendarClock
 					class="h-full group-hover:animate-bounce"
 					style="width: 30px; height: 30px;"
@@ -70,8 +91,13 @@
 </section>
 
 <section class="mx-auto flex max-w-7xl flex-col space-y-8">
-	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0">
-		Our Comprehensive <span class="text-primary">Services</span>
+	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 rtl:hidden">
+		{translate('Our Comprehensive', 'الشاملة')} <span class="text-primary">Services</span>
+		<hr class="w-full bg-primary" />
+	</h2>
+
+	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 ltr:hidden">
+		خدماتنا <span class="text-primary">الشاملة</span>
 		<hr class="w-full bg-primary" />
 	</h2>
 	<div class="grid grid-cols-1 grid-rows-2 gap-7 px-8 md:grid-cols-2">
@@ -82,7 +108,7 @@
 			<div
 				class=" absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Dental implants
+				{translate('Dental implants', 'زراعة الأسنان')}
 			</div>
 		</div>
 
@@ -93,7 +119,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Aesthetic Dentistry
+				{translate('Aesthetic Dentistry', 'تجميل الأسنان')}
 			</div>
 		</div>
 
@@ -104,7 +130,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Tooth Correction
+				{translate('Tooth Correction', 'تصحيح الأسنان')}
 			</div>
 		</div>
 
@@ -115,7 +141,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				Skin Care
+				{translate('Skin Care', 'العناية بالبشرة')}
 			</div>
 		</div>
 	</div>

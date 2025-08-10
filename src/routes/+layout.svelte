@@ -7,13 +7,9 @@
 	import Menu from '$lib/components/Layout/Menu.svelte';
 	import Navbar from '$lib/components/Layout/Navbar.svelte';
 	import { lenis } from '$lib/lenis';
-
+	import { getLocale } from '$lib/paraglide/runtime';
+	let isArabic = $state(getLocale() === 'ar');
 	let { children } = $props();
-
-	$effect(() => {
-		// Prevent body scroll when the menu is open
-		//document.body.style.overflow = getNavState() ? 'hidden' : 'auto';
-	});
 </script>
 
 <svelte:head>
@@ -21,9 +17,9 @@
 </svelte:head>
 
 <div class="relative h-full w-full overflow-x-hidden">
-	<Navbar />
+	<Navbar bind:isArabic />
 
-	<Menu />
+	<Menu bind:isArabic />
 
 	<div>
 		<main

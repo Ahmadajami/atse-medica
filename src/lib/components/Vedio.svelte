@@ -35,8 +35,12 @@
 </script>
 
 <section class="mx-auto my-9 flex max-w-7xl flex-col space-y-8">
-	<h2 class="mx-4 w-fit text-5xl text-wrap md:mx-0">
+	<h2 class="mx-4 w-fit text-5xl text-wrap md:mx-0 rtl:hidden">
 		Let's Take A<span class="text-primary">{' '}Tour</span>
+		<hr class="w-full bg-primary" />
+	</h2>
+	<h2 class="mx-4 w-fit text-5xl text-wrap md:mx-0 ltr:hidden">
+		لنأخذ<span class="text-primary">{' '}جولة</span>
 		<hr class="w-full bg-primary" />
 	</h2>
 
