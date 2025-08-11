@@ -1,29 +1,11 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
-	import LoaderPinwheel from '@lucide/svelte/icons/loader-pinwheel';
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import Vedio from '$lib/components/Vedio.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
-	import hero from '$lib/assets/wating_room.webp';
-	import hero2 from '$lib/assets/wating_room_second.webp';
+	import HeroCarousel from '$lib/components/Layout/HeroCarousel.svelte';
 
-	let images = $state([hero, hero2]); // Array of image sources
-	let currentIndex = $state(0);
-	let src = $derived(images[currentIndex]);
-	let intervalId;
-	$effect(() => {
-		intervalId = setInterval(() => {
-			currentIndex = (currentIndex + 1) % images.length;
-			src = images[currentIndex];
-		}, 2000);
-	});
-
-	let imageLoaded = $state(false);
-
-	function handleImageLoad() {
-		imageLoaded = true;
-	}
 	const grid_image: string = 'https://picsum.photos/400/300';
 	let isArabic = $state(getLocale() === 'ar');
 
@@ -44,17 +26,7 @@
 			'animate-in duration-1000 slide-in-from-left-100'
 		]}
 	>
-		{#if !imageLoaded}
-			<div class="absolute inset-0 flex items-center justify-center space-x-2">
-				<LoaderPinwheel class="animate-spin text-primary duration-300 ease-in-out" />
-				<span>{isArabic ? 'تحميل الصورة' : 'Image Loading'}</span>
-			</div>
-		{/if}
-		<img
-			{src}
-			alt="Atse Medica Center"
-			class="absolute inset-0 h-full w-full animate-in rounded-xl object-cover duration-700 fade-in-90"
-		/>
+		<HeroCarousel bind:isArabic />
 	</div>
 
 	<div
@@ -74,7 +46,7 @@
 
 		<div class="group relative container mt-5 gap-3">
 			<Button
-				class="flex h-full w-full items-center justify-between px-4"
+				class="flex h-full   w-full items-center  justify-between px-4  "
 				href="#"
 				variant="secondary"
 			>

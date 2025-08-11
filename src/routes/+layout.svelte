@@ -14,6 +14,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>AtsÈ Medica</title>
 </svelte:head>
 
 <div class="relative h-full w-full overflow-x-hidden">

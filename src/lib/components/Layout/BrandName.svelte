@@ -18,7 +18,7 @@
 	// آ
 </script>
 
-<span class={cn(defultclass, className, 'tracking-wide')}
+<span class={cn(defultclass, className, 'tracking-widest')}
 	>{translate('ATS', 'آتس')}<span class={cn(defultEclass)}>{translate('È', 'ي  ')}</span>{translate(
 		'MEDICA',
 		'ميديكا'
