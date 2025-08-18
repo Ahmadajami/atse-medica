@@ -2,7 +2,6 @@
 	import { localizeHref, setLocale } from '$lib/paraglide/runtime';
 	import Globe from '@lucide/svelte/icons/globe';
 	import { lenis, easeInOutCubic } from '$lib/lenis';
-	import { onDestroy } from 'svelte';
 
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 
@@ -26,9 +25,6 @@
 		}
 	}
 
-	onDestroy(() => {
-		if (lenis) lenis.destroy();
-	});
 	let scrollY = $state(0);
 	let lastScrollY = $state(0);
 	let shy = $state(false);

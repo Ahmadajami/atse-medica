@@ -10,8 +10,12 @@
 	import { getLocale } from '$lib/paraglide/runtime';
 
 	import { m } from '$lib/paraglide/messages';
+	import { onDestroy } from 'svelte';
 	let isArabic = $state(getLocale() === 'ar');
 	let { children } = $props();
+	onDestroy(() => {
+		if (lenis) lenis.destroy();
+	});
 </script>
 
 <svelte:head>
