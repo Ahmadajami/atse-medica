@@ -5,6 +5,10 @@
 	import Vedio from '$lib/components/Vedio.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import HeroCarousel from '$lib/components/Layout/HeroCarousel.svelte';
+	import dental from '$lib/assets/dental-clean.jpg';
+	import implemant from '$lib/assets/implemant.jpg';
+	import asthetic from '$lib/assets/asthetic.jpg';
+	import dermatologist from '$lib/assets/dermatologist.jpg';
 
 	const grid_image: string = 'https://picsum.photos/400/300';
 	let isArabic = $state(getLocale() === 'ar');
@@ -17,7 +21,7 @@
 </script>
 
 <section
-	id="Hero"
+	id="hero"
 	class={['mx-auto flex max-w-7xl  flex-col items-center gap-8 px-5 py-12 md:flex-row']}
 >
 	<div
@@ -62,7 +66,7 @@
 	</div>
 </section>
 
-<section class="mx-auto flex max-w-7xl flex-col space-y-8">
+<section id="services" class="mx-auto flex max-w-7xl flex-col space-y-8">
 	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 rtl:hidden">
 		{translate('Our Comprehensive', 'الشاملة')} <span class="text-primary">Services</span>
 		<hr class="w-full bg-primary" />
@@ -75,7 +79,7 @@
 	<div class="grid grid-cols-1 grid-rows-2 gap-7 px-8 md:grid-cols-2">
 		<div
 			class="relative h-48 w-full rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d"
-			style="background-image: url('{grid_image}');"
+			style="background-image: url('{implemant}');"
 		>
 			<div
 				class=" absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
@@ -86,7 +90,7 @@
 
 		<div
 			class="relative h-48 w-full translate-x-4 rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d md:mt-[40px]"
-			style="background-image: url('{grid_image}');"
+			style="background-image: url('{asthetic}');"
 		>
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
@@ -97,7 +101,7 @@
 
 		<div
 			class="relative h-48 w-full rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d"
-			style="background-image: url('{grid_image}');"
+			style="background-image: url('{dental}');"
 		>
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
@@ -108,7 +112,7 @@
 
 		<div
 			class="relative h-48 w-full -translate-x-4 rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d md:mt-[40px] md:translate-x-0"
-			style="background-image: url('{grid_image}');"
+			style="background-image: url('{dermatologist}');"
 		>
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"

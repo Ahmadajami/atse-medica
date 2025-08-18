@@ -2,19 +2,34 @@
 	// è is È.
 	import '@fontsource-variable/montserrat';
 	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/atse-logo.png';
 	import { getNavState } from '$lib/components/navstate.svelte';
 	import Menu from '$lib/components/Layout/Menu.svelte';
 	import Navbar from '$lib/components/Layout/Navbar.svelte';
 	import { lenis } from '$lib/lenis';
 	import { getLocale } from '$lib/paraglide/runtime';
+
+	import { m } from '$lib/paraglide/messages';
 	let isArabic = $state(getLocale() === 'ar');
 	let { children } = $props();
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>AtsÈ Medica</title>
+
+	<title>{m.homepage_title()}</title>
+
+	<meta name="description" content={m.homepage_description()} />
+	<meta name="keywords" content={m.homepage_keywords()} />
+	<meta name="author" content={m.clinic_author()} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://atse-medica.vercel.app/" />
+	<meta property="og:title" content={m.homepage_title()} />
+	<meta property="og:description" content={m.homepage_description()} />
+	<meta property="og:image" content="https://atse-medica.vercel.app/atse-logo.png" />
+
+	<link rel="canonical" href="https://atse-medica.vercel.app/" />
 </svelte:head>
 
 <div class="relative h-full w-full overflow-x-hidden">

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { localizeHref, setLocale } from '$lib/paraglide/runtime';
 	import Globe from '@lucide/svelte/icons/globe';
+	import { lenis, easeInOutCubic } from '$lib/lenis';
+	import { onDestroy } from 'svelte';
 
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 
@@ -10,9 +12,40 @@
 	function translate(word: string, t: string) {
 		return isArabic ? t : word;
 	}
+	function scrollToHash(e: MouseEvent) {
+		e.preventDefault();
+		if (!lenis) return;
+
+		const target = (e.currentTarget as HTMLAnchorElement).hash;
+		if (!target) return;
+
+		const el = document.querySelector<HTMLElement>(target);
+		if (el) {
+			lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
+			shy = true;
+		}
+	}
+
+	onDestroy(() => {
+		if (lenis) lenis.destroy();
+	});
+	let scrollY = $state(0);
+	let lastScrollY = $state(0);
+	let shy = $state(false);
+
+	const handleScroll = () => {
+		const scrollingDown = lastScrollY < scrollY;
+		shy = scrollingDown && scrollY > 200;
+		lastScrollY = scrollY;
+	};
 </script>
 
-<nav class="bg-base-100/80 fixed top-0 right-0 left-0 z-40 h-16 w-full backdrop-blur-sm">
+<svelte:window bind:scrollY on:scroll={handleScroll} />
+
+<nav
+	class:nav-slide={shy}
+	class="bg-base-100/80 fixed top-0 right-0 left-0 z-40 h-16 w-full backdrop-blur-sm"
+>
 	<div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<a href={localizeHref('/')} class="flex items-center space-x-2">
 			<enhanced:img src={logo} width="40" height="40" class="inline-flex" alt="Atse Medica Logo" />
@@ -20,10 +53,26 @@
 		</a>
 
 		<ul class="hidden space-x-8 font-medium md:flex">
-			<li><a href="#home" class="hover:text-primary">{translate('Home', 'الرئيسية')}</a></li>
-			<li><a href="#about" class="hover:text-primary">{translate('About', 'من نحن')}</a></li>
-			<li><a href="#services" class="hover:text-primary">{translate('Services', 'الخدمات')}</a></li>
-			<li><a href="#contact" class="hover:text-primary">{translate('Contact', 'التواصل')}</a></li>
+			<li>
+				<a href="#hero" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
+					>{translate('Home', 'الرئيسية')}</a
+				>
+			</li>
+			<li>
+				<a href="#about" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
+					>{translate('About', 'من نحن')}</a
+				>
+			</li>
+			<li>
+				<a href="#services" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
+					>{translate('Services', 'الخدمات')}</a
+				>
+			</li>
+			<li>
+				<a href="#contact" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
+					>{translate('Contact', 'التواصل')}</a
+				>
+			</li>
 			<li>
 				<button
 					class="m-0 p-0 hover:text-primary ltr:block rtl:hidden"
@@ -48,3 +97,10 @@
 		</div>
 	</div>
 </nav>
+
+<style>
+	.nav-slide {
+		transform: translateY(-200%);
+		transition: transform 0.5s ease-in-out;
+	}
+</style>
