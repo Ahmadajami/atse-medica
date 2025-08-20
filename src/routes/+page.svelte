@@ -5,12 +5,11 @@
 	import Vedio from '$lib/components/Vedio.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import HeroCarousel from '$lib/components/Layout/HeroCarousel.svelte';
-	import dental from '$lib/assets/dental-clean.jpg';
+	import dental from '$lib/assets/dental-clean.webp';
 	import implemant from '$lib/assets/implemant.jpg';
-	import asthetic from '$lib/assets/asthetic.jpg';
-	import dermatologist from '$lib/assets/dermatologist.jpg';
+	import asthetic from '$lib/assets/asthetic.webp';
+	import dermatologist from '$lib/assets/dermatologist.webp';
 
-	const grid_image: string = 'https://picsum.photos/400/300';
 	let isArabic = $state(getLocale() === 'ar');
 
 	// è is È.
@@ -66,7 +65,7 @@
 	</div>
 </section>
 
-<section id="services" class="mx-auto flex max-w-7xl flex-col space-y-8">
+<section id="services" class="mx-auto flex max-w-7xl transform-gpu flex-col space-y-8">
 	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 rtl:hidden">
 		{translate('Our Comprehensive', 'الشاملة')} <span class="text-primary">Services</span>
 		<hr class="w-full bg-primary" />
@@ -78,7 +77,7 @@
 	</h2>
 	<div class="grid grid-cols-1 grid-rows-2 gap-7 px-8 md:grid-cols-2">
 		<div
-			class="relative h-48 w-full rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d"
+			class="relative h-48 w-full rounded-lg bg-cover bg-center"
 			style="background-image: url('{implemant}');"
 		>
 			<div
@@ -89,7 +88,7 @@
 		</div>
 
 		<div
-			class="relative h-48 w-full translate-x-4 rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d md:mt-[40px]"
+			class="relative h-48 w-full translate-x-4 rounded-lg bg-cover bg-center md:mt-[40px]"
 			style="background-image: url('{asthetic}');"
 		>
 			<div
@@ -100,7 +99,7 @@
 		</div>
 
 		<div
-			class="relative h-48 w-full rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d"
+			class="relative h-48 w-full rounded-lg bg-cover bg-center"
 			style="background-image: url('{dental}');"
 		>
 			<div
@@ -111,7 +110,7 @@
 		</div>
 
 		<div
-			class="relative h-48 w-full -translate-x-4 rounded-lg bg-cover bg-center duration-150 ease-in-out hover:scale-110 hover:scale-3d md:mt-[40px] md:translate-x-0"
+			class="relative h-48 w-full -translate-x-4 rounded-lg bg-cover bg-center md:mt-[40px] md:translate-x-0"
 			style="background-image: url('{dermatologist}');"
 		>
 			<div
@@ -134,7 +133,7 @@
 		</div>
 
 		<!-- Right: Google Maps -->
-		<div class="h-80 overflow-hidden rounded-2xl shadow-lg lg:h-96">
+		<div class="h-80 overflow-hidden rounded-2xl lg:h-96">
 			<iframe
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207.92255864395608!2d36.28289644994379!3d33.50759638488797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e176067da0d5%3A0xb3d69b5730908124!2sAtef%20Ajami%20Sons%20Company.AASCO!5e0!3m2!1sen!2s!4v1755534937816!5m2!1sen!2s"
 				width="100%"

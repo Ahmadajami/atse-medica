@@ -6,11 +6,13 @@
 	import { getNavState } from '$lib/components/navstate.svelte';
 	import Menu from '$lib/components/Layout/Menu.svelte';
 	import Navbar from '$lib/components/Layout/Navbar.svelte';
-	import { lenis } from '$lib/lenis';
+
 	import { getLocale } from '$lib/paraglide/runtime';
 
 	import { m } from '$lib/paraglide/messages';
 	import { onDestroy } from 'svelte';
+	import { lenis } from '$lib/lenis';
+
 	let isArabic = $state(getLocale() === 'ar');
 	let { children } = $props();
 	onDestroy(() => {
@@ -51,6 +53,8 @@
 		</main>
 	</div>
 </div>
+
+<section id="footer"></section>
 
 <style>
 	:global(body) {

@@ -1,12 +1,13 @@
 <script lang="ts">
+	import { scrollY } from 'svelte/reactivity/window';
 	import { localizeHref, setLocale } from '$lib/paraglide/runtime';
 	import Globe from '@lucide/svelte/icons/globe';
-	import { lenis, easeInOutCubic } from '$lib/lenis';
-
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 
 	import Hamburger from '$lib/components/Layout/Hamburger.svelte';
 	import logo from '$lib/assets/atse-logo.png?enhanced';
+	import { lenis } from '$lib/lenis';
+	import { onDestroy } from 'svelte';
 	let { isArabic = $bindable() } = $props();
 	function translate(word: string, t: string) {
 		return isArabic ? t : word;
@@ -20,27 +21,31 @@
 
 		const el = document.querySelector<HTMLElement>(target);
 		if (el) {
-			lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
+			lenis.scrollTo(el, { duration: 2 });
 			shy = true;
 		}
 	}
 
-	let scrollY = $state(0);
 	let lastScrollY = $state(0);
 	let shy = $state(false);
 
 	const handleScroll = () => {
-		const scrollingDown = lastScrollY < scrollY;
-		shy = scrollingDown && scrollY > 200;
-		lastScrollY = scrollY;
+		if (scrollY) {
+			const scrollingDown = lastScrollY < scrollY.current!;
+			shy = scrollingDown && scrollY.current! > 200;
+			lastScrollY = scrollY.current!;
+		}
 	};
+	onDestroy(() => {
+		if (lenis) lenis.destroy();
+	});
 </script>
 
-<svelte:window bind:scrollY on:scroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 <nav
 	class:nav-slide={shy}
-	class="bg-base-100/80 fixed top-0 right-0 left-0 z-40 h-16 w-full backdrop-blur-sm"
+	class=" bg-base-100/80 fixed top-0 right-0 left-0 z-40 h-16 w-full backdrop-blur-sm delay-75"
 >
 	<div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<a href={localizeHref('/')} class="flex items-center space-x-2">
