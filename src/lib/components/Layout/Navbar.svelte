@@ -6,7 +6,7 @@
 
 	import Hamburger from '$lib/components/Layout/Hamburger.svelte';
 	import logo from '$lib/assets/atse-logo.png?enhanced';
-	import { lenis } from '$lib/lenis';
+	import { lenis, easeInOutCubic } from '$lib/lenis';
 	import { onDestroy } from 'svelte';
 	let { isArabic = $bindable() } = $props();
 	function translate(word: string, t: string) {
@@ -21,7 +21,7 @@
 
 		const el = document.querySelector<HTMLElement>(target);
 		if (el) {
-			lenis.scrollTo(el, { duration: 2 });
+			lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
 			shy = true;
 		}
 	}

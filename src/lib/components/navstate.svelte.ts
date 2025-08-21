@@ -7,3 +7,6 @@ export function getNavState() {
 export function toggleNavState() {
 	isOpen = !isOpen;
 }
+export function CloseNavState() {
+	isOpen = false;
+}

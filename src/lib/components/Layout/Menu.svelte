@@ -1,10 +1,27 @@
 <script lang="ts">
+	import { easeInOutCubic, lenis } from '$lib/lenis';
 	import { setLocale } from '$lib/paraglide/runtime';
-	import { getNavState, toggleNavState } from '../navstate.svelte';
+	import { getNavState, toggleNavState, CloseNavState } from '../navstate.svelte';
 	import Globe from '@lucide/svelte/icons/globe';
 	let { isArabic = $bindable() } = $props();
 	function translate(word: string, t: string) {
 		return isArabic ? t : word;
+	}
+
+	function scrollToHash(e: MouseEvent) {
+		e.preventDefault();
+		if (!lenis) return;
+
+		const target = (e.currentTarget as HTMLAnchorElement).hash;
+		if (!target) return;
+
+		const el = document.querySelector<HTMLElement>(target);
+		if (el) {
+			CloseNavState();
+			setTimeout(() => {
+				lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
+			}, 300);
+		}
 	}
 </script>
 
@@ -17,21 +34,22 @@
 >
 	<!-- Fullscreen Nav Links -->
 	<nav class="flex h-full w-full flex-col items-center justify-center space-y-8 text-2xl font-bold">
-		<a href="/#home" class="transition hover:text-primary" onclick={toggleNavState}
+		<a href="/#home" class="transition hover:text-primary" onclick={scrollToHash}
 			>{translate('Home', 'الرئيسية')}</a
 		>
-		<a href="/#about" class="transition hover:text-primary" onclick={toggleNavState}
+		<a href="/#about" class="transition hover:text-primary" onclick={scrollToHash}
 			>{translate('About', 'من نحن')}</a
 		>
-		<a href="/#services" class="transition hover:text-primary" onclick={toggleNavState}
+		<a href="/#services" class="transition hover:text-primary" onclick={scrollToHash}
 			>{translate('Services', 'الخدمات')}</a
 		>
-		<a href="/#contact" class="transition hover:text-primary" onclick={toggleNavState}
+		<a href="/#contact" class="transition hover:text-primary" onclick={scrollToHash}
 			>{translate('Contact', 'التواصل')}</a
 		>
 		<button
 			class="m-0 p-0 hover:text-primary ltr:block rtl:hidden"
 			onclick={() => {
+				toggleNavState();
 				setLocale('ar');
 			}}
 		>
@@ -41,6 +59,7 @@
 		<button
 			class="hover:text-primary ltr:hidden rtl:block"
 			onclick={() => {
+				toggleNavState();
 				setLocale('en');
 			}}
 			><span class="mx-1"> EN </span><Globe class="inline-block" />
