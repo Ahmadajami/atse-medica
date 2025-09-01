@@ -5,11 +5,11 @@
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 
 	import Hamburger from '$lib/components/Layout/Hamburger.svelte';
-	import logo from '$lib/assets/atse-logo.png?enhanced';
+
 	import { lenis, easeInOutCubic } from '$lib/lenis';
 	import { onDestroy } from 'svelte';
 	import { m } from '$lib/paraglide/messages';
-	
+
 	function scrollToHash(e: MouseEvent) {
 		e.preventDefault();
 		if (!lenis) return;
@@ -47,7 +47,6 @@
 >
 	<div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<a href={localizeHref('/')} class="flex items-center space-x-2">
-			<enhanced:img src={logo} width="40" height="40" class="inline-flex" alt="Atse Medica Logo" />
 			<BrandName />
 		</a>
 

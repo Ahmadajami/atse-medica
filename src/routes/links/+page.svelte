@@ -23,7 +23,7 @@
 					class="inline-flex pb-8"
 					alt="Atse Medica Logo"
 				/>
-				<BrandName className="text-4xl text-wrap" bind:isArabic />
+				<BrandName className="text-4xl text-wrap" />
 			</div>
 
 			<div class=" inline-flex space-x-8 self-center">

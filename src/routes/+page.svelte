@@ -2,23 +2,35 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
-	import Vedio from '$lib/components/Vedio.svelte';
 	import HeroCarousel from '$lib/components/Layout/HeroCarousel.svelte';
 	import dental from '$lib/assets/dental-clean.webp';
-	import implemant from '$lib/assets/implemant.jpg';
+	import implemant from '$lib/assets/implemant.webp';
 	import asthetic from '$lib/assets/asthetic.webp';
 	import dermatologist from '$lib/assets/dermatologist.webp';
+
 	import { m } from '$lib/paraglide/messages';
 	// è is È.
+	let { data } = $props();
 </script>
 
+<svelte:head>
+	<link rel="preload" href={dental} as="image" />
+	<link rel="preload" href={implemant} as="image" />
+	<link rel="preload" href={asthetic} as="image" />
+	<link rel="preload" href={dermatologist} as="image" />
+	<link
+		rel="preconnect"
+		href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207.92255864395608!2d36.28289644994379!3d33.50759638488797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e176067da0d5%3A0xb3d69b5730908124!2sAtef%20Ajami%20Sons%20Company.AASCO!5e0!3m2!1sen!2s!4v1755534937816!5m2!1sen!2s"
+	/>
+	<link rel="preconnect" href="https://maps.googleapis.com" />
+</svelte:head>
 <section
 	id="hero"
-	class={['mx-auto flex max-w-7xl  flex-col items-center gap-8 px-5 py-12 md:flex-row']}
+	class="mx-auto flex max-w-7xl transform-gpu flex-col items-center gap-8 px-5 py-12 md:flex-row"
 >
 	<div
 		class={[
-			'relative aspect-[10/7] w-full max-w-xl',
+			'relative aspect-[10/7] w-full max-w-xl will-change-auto',
 			'animate-in duration-1000 slide-in-from-left-100'
 		]}
 	>
@@ -27,7 +39,7 @@
 
 	<div
 		class={[
-			'flex flex-1 flex-col justify-center gap-4',
+			'flex flex-1 flex-col justify-center gap-4 will-change-auto',
 			'animate-in duration-1000 slide-in-from-right-100'
 		]}
 	>
@@ -42,7 +54,7 @@
 
 		<div class="group relative container mt-5 gap-3">
 			<Button
-				class="flex h-full   w-full items-center  justify-between px-4  "
+				class="flex h-full w-full items-center  justify-between px-4  "
 				href="#"
 				variant="secondary"
 			>
@@ -112,8 +124,7 @@
 		</div>
 	</div>
 </section>
-
-<Vedio />
+<data.Vedio />
 
 <section id="about" class="w-full py-12">
 	<div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 lg:grid-cols-2 lg:px-12">
@@ -125,16 +136,7 @@
 
 		<!-- Right: Google Maps -->
 		<div class="h-80 overflow-hidden rounded-2xl lg:h-96">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207.92255864395608!2d36.28289644994379!3d33.50759638488797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e176067da0d5%3A0xb3d69b5730908124!2sAtef%20Ajami%20Sons%20Company.AASCO!5e0!3m2!1sen!2s!4v1755534937816!5m2!1sen!2s"
-				width="100%"
-				height="100%"
-				style="border:0;"
-				title="Atse Medical Location"
-				loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade"
-			>
-			</iframe>
+			<data.Map />
 		</div>
 	</div>
 </section>
