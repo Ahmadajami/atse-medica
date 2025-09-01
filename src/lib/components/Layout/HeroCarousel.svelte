@@ -8,7 +8,6 @@
 	const images = [hero, hero2];
 
 	let interval: number = $state() as number;
-	let { isArabic = $bindable() }: { isArabic: boolean } = $props();
 
 	let imageLoaded = $state(false);
 	function handleImageLoad() {
@@ -29,7 +28,7 @@
 	{#if !imageLoaded}
 		<div class="absolute inset-0 flex items-center justify-center space-x-2">
 			<LoaderPinwheel class="animate-spin text-primary duration-300 ease-in-out" />
-			<span>{isArabic ? 'تحميل الصورة' : 'Image Loading'}</span>
+			<span>Image Loading</span>
 		</div>
 	{/if}
 	<enhanced:img

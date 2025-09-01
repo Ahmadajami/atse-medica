@@ -3,20 +3,13 @@
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import Vedio from '$lib/components/Vedio.svelte';
-	import { getLocale } from '$lib/paraglide/runtime';
 	import HeroCarousel from '$lib/components/Layout/HeroCarousel.svelte';
 	import dental from '$lib/assets/dental-clean.webp';
 	import implemant from '$lib/assets/implemant.jpg';
 	import asthetic from '$lib/assets/asthetic.webp';
 	import dermatologist from '$lib/assets/dermatologist.webp';
-
-	let isArabic = $state(getLocale() === 'ar');
-
+	import { m } from '$lib/paraglide/messages';
 	// è is È.
-
-	function translate(word: string, t: string) {
-		return isArabic ? t : word;
-	}
 </script>
 
 <section
@@ -29,7 +22,7 @@
 			'animate-in duration-1000 slide-in-from-left-100'
 		]}
 	>
-		<HeroCarousel bind:isArabic />
+		<HeroCarousel />
 	</div>
 
 	<div
@@ -39,12 +32,12 @@
 		]}
 	>
 		<h1>
-			<BrandName defultclass="text-4xl leading-tight font-bold md:text-5xl" bind:isArabic />
+			<BrandName defultclass="text-4xl leading-tight font-bold md:text-5xl" />
 		</h1>
 		<p class=" text-3xl">
-			{isArabic ? 'حيث' : 'Where Your'}
-			<span class="text-primary">{isArabic ? 'الإبتسامة' : 'Smile'}</span>
-			{translate('Glows', 'تشرق')}
+			{m.intro_slogan()}
+			<span class="text-primary">{m.smile()}</span>
+			{m.glows()}
 		</p>
 
 		<div class="group relative container mt-5 gap-3">
@@ -53,9 +46,7 @@
 				href="#"
 				variant="secondary"
 			>
-				<span class="text-left text-2xl group-hover:animate-bounce"
-					>{translate('Reserve Now', 'احجز الأن')}</span
-				>
+				<span class="text-left text-2xl group-hover:animate-bounce">{m.reserve()}</span>
 				<CalendarClock
 					class="h-full group-hover:animate-bounce"
 					style="width: 30px; height: 30px;"
@@ -67,7 +58,7 @@
 
 <section id="services" class="mx-auto flex max-w-7xl transform-gpu flex-col space-y-8">
 	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 rtl:hidden">
-		{translate('Our Comprehensive', 'الشاملة')} <span class="text-primary">Services</span>
+		{m.tiny_polite_vole_mop()} <span class="text-primary">{m.services()}</span>
 		<hr class="w-full bg-primary" />
 	</h2>
 
@@ -83,7 +74,7 @@
 			<div
 				class=" absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				{translate('Dental implants', 'زراعة الأسنان')}
+				{m.implants()}
 			</div>
 		</div>
 
@@ -94,7 +85,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				{translate('Aesthetic Dentistry', 'تجميل الأسنان')}
+				{m.asthetic()}
 			</div>
 		</div>
 
@@ -105,7 +96,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				{translate('Tooth Correction', 'تصحيح الأسنان')}
+				{m.tooth_correction()}
 			</div>
 		</div>
 
@@ -116,7 +107,7 @@
 			<div
 				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
 			>
-				{translate('Skin Care', 'العناية بالبشرة')}
+				{m.skin_care()}
 			</div>
 		</div>
 	</div>
@@ -128,8 +119,8 @@
 	<div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 lg:grid-cols-2 lg:px-12">
 		<!-- Left: Logo & Info -->
 		<div class="flex flex-col items-center space-y-6 text-center lg:items-start lg:text-left">
-			<BrandName bind:isArabic className="text-4xl" />
-			<h2 class="text-3xl font-bold">Visit Our Location</h2>
+			<BrandName className="text-4xl" />
+			<h2 class="text-3xl font-bold">{m.visit()}</h2>
 		</div>
 
 		<!-- Right: Google Maps -->

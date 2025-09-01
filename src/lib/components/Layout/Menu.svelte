@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { easeInOutCubic, lenis } from '$lib/lenis';
+	import { m } from '$lib/paraglide/messages';
 	import { setLocale } from '$lib/paraglide/runtime';
 	import { getNavState, toggleNavState, CloseNavState } from '../navstate.svelte';
 	import Globe from '@lucide/svelte/icons/globe';
-	let { isArabic = $bindable() } = $props();
-	function translate(word: string, t: string) {
-		return isArabic ? t : word;
-	}
+
 
 	function scrollToHash(e: MouseEvent) {
 		e.preventDefault();
@@ -19,7 +17,7 @@
 		if (el) {
 			CloseNavState();
 			setTimeout(() => {
-				lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
+				if (lenis) lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
 			}, 300);
 		}
 	}
@@ -34,17 +32,13 @@
 >
 	<!-- Fullscreen Nav Links -->
 	<nav class="flex h-full w-full flex-col items-center justify-center space-y-8 text-2xl font-bold">
-		<a href="/#home" class="transition hover:text-primary" onclick={scrollToHash}
-			>{translate('Home', 'الرئيسية')}</a
-		>
-		<a href="/#about" class="transition hover:text-primary" onclick={scrollToHash}
-			>{translate('About', 'من نحن')}</a
-		>
+		<a href="/#home" class="transition hover:text-primary" onclick={scrollToHash}>{m.home()}</a>
+		<a href="/#about" class="transition hover:text-primary" onclick={scrollToHash}>{m.about()}</a>
 		<a href="/#services" class="transition hover:text-primary" onclick={scrollToHash}
-			>{translate('Services', 'الخدمات')}</a
+			>{m.services()}</a
 		>
 		<a href="/#contact" class="transition hover:text-primary" onclick={scrollToHash}
-			>{translate('Contact', 'التواصل')}</a
+			>{m.contact()}</a
 		>
 		<button
 			class="m-0 p-0 hover:text-primary ltr:block rtl:hidden"

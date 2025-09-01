@@ -6,9 +6,7 @@
 	import { getNavState } from '$lib/components/navstate.svelte';
 	import Menu from '$lib/components/Layout/Menu.svelte';
 	import Navbar from '$lib/components/Layout/Navbar.svelte';
-
 	import { getLocale } from '$lib/paraglide/runtime';
-
 	import { m } from '$lib/paraglide/messages';
 	import { onDestroy } from 'svelte';
 	import { lenis } from '$lib/lenis';
@@ -39,9 +37,9 @@
 </svelte:head>
 
 <div class="relative h-full w-full overflow-x-hidden">
-	<Navbar bind:isArabic />
+	<Navbar />
 
-	<Menu bind:isArabic />
+	<Menu />
 
 	<div>
 		<main

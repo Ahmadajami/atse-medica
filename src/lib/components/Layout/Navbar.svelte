@@ -8,10 +8,8 @@
 	import logo from '$lib/assets/atse-logo.png?enhanced';
 	import { lenis, easeInOutCubic } from '$lib/lenis';
 	import { onDestroy } from 'svelte';
-	let { isArabic = $bindable() } = $props();
-	function translate(word: string, t: string) {
-		return isArabic ? t : word;
-	}
+	import { m } from '$lib/paraglide/messages';
+	
 	function scrollToHash(e: MouseEvent) {
 		e.preventDefault();
 		if (!lenis) return;
@@ -50,28 +48,24 @@
 	<div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<a href={localizeHref('/')} class="flex items-center space-x-2">
 			<enhanced:img src={logo} width="40" height="40" class="inline-flex" alt="Atse Medica Logo" />
-			<BrandName bind:isArabic />
+			<BrandName />
 		</a>
 
 		<ul class="hidden space-x-8 font-medium md:flex">
 			<li>
-				<a href="#hero" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
-					>{translate('Home', 'الرئيسية')}</a
-				>
+				<a href="#hero" onclick={(e) => scrollToHash(e)} class="hover:text-primary"> {m.home()}</a>
 			</li>
 			<li>
-				<a href="#about" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
-					>{translate('About', 'من نحن')}</a
-				>
+				<a href="#about" onclick={(e) => scrollToHash(e)} class="hover:text-primary">{m.about()}</a>
 			</li>
 			<li>
 				<a href="#services" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
-					>{translate('Services', 'الخدمات')}</a
+					>{m.services()}</a
 				>
 			</li>
 			<li>
 				<a href="#contact" onclick={(e) => scrollToHash(e)} class="hover:text-primary"
-					>{translate('Contact', 'التواصل')}</a
+					>{m.contact()}</a
 				>
 			</li>
 			<li>

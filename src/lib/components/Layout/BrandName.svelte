@@ -1,16 +1,15 @@
 <script lang="ts">
+	import { getLocale } from '$lib/paraglide/runtime';
 	import { cn } from '$lib/utils';
-
+	let isArabic = $state(getLocale() === 'ar');
 	let {
 		defultclass = 'text-lg font-bold',
 		defultEclass = 'text-primary',
-		className,
-		isArabic = $bindable()
+		className
 	}: {
 		defultclass?: string;
 		defultEclass?: string;
 		className?: string;
-		isArabic: boolean;
 	} = $props();
 	function translate(word: string, t: string) {
 		return isArabic ? t : word;
