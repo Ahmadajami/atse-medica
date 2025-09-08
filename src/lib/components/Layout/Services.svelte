@@ -68,12 +68,6 @@
 		'Discover our comprehensive range of dental and dermatology services, designed to give you the confidence that comes with optimal health and beauty.';
 </script>
 
-<svelte:head>
-	<link rel="preload" href={toothcorrection} as="image" />
-	<link rel="preload" href={implemant} as="image" />
-	<link rel="preload" href={asthetic} as="image" />
-	<link rel="preload" href={dermatologist} as="image" />
-</svelte:head>
 <section id="services" class=" px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-16 text-center">
@@ -91,14 +85,16 @@
 
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 			{#each getLocale() == 'ar' ? services_ar : services as service, index (service.title)}
+				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 				<div
-					class={`group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl  active:-translate-y-2 active:shadow-2xl `}
+					tabindex="0"
+					class="group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 focus-within:-translate-y-2 focus-within:shadow-2xl hover:-translate-y-2 hover:shadow-2xl"
 				>
 					<div class="relative h-80 overflow-hidden">
 						<img
 							src={service.image}
 							alt={service.title}
-							class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+							class="h-full w-full object-cover transition-transform duration-700 group-focus-within:scale-110 group-hover:scale-110"
 						/>
 						<div
 							class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
@@ -109,18 +105,18 @@
 						class="absolute inset-0 flex flex-col justify-end p-6 text-left text-white rtl:text-right"
 					>
 						<div class="mb-3 flex items-center space-x-3 rtl:space-x-reverse">
-							<Sparkles class="text-primary-400 h-6 w-6" />
+							<Sparkles class="text-primary-400 h-6 w-6 rtl:mx-2 " fill="primary" />
 							<h3 class="text-2xl font-bold">{service.title}</h3>
 						</div>
 
 						<p
-							class="mb-4 leading-relaxed text-gray-200 opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100"
+							class="mb-4 leading-relaxed text-gray-200 opacity-0 transition-opacity delay-100 duration-500 group-focus-within:opacity-100 group-hover:opacity-100"
 						>
 							{service.description}
 						</p>
 
 						<ul
-							class="space-y-2 opacity-0 transition-opacity delay-200 duration-500 group-hover:opacity-100"
+							class="space-y-2 opacity-0 transition-opacity delay-200 duration-500 group-focus-within:opacity-100 group-hover:opacity-100"
 						>
 							{#each service.features as feature}
 								<li class="flex items-center space-x-2 text-sm text-gray-300 rtl:space-x-reverse">
@@ -132,7 +128,7 @@
 					</div>
 
 					<div
-						class="border-primary-500 absolute inset-0 rounded-2xl border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+						class="border-primary-500 absolute inset-0 rounded-2xl border-2 opacity-0 transition-opacity duration-300 group-focus-within:opacity-100 group-hover:opacity-100"
 					></div>
 				</div>
 			{/each}

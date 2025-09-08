@@ -4,15 +4,14 @@
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import HeroCarousel from '$lib/components/Layout/HeroCarousel.svelte';
 
-
 	import { m } from '$lib/paraglide/messages';
 	import Services from '$lib/components/Layout/Services.svelte';
+	import About from '$lib/components/Layout/About.svelte';
 	// è is È.
 	let { data } = $props();
 </script>
 
 <svelte:head>
-	
 	<link
 		rel="preconnect"
 		href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207.92255864395608!2d36.28289644994379!3d33.50759638488797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e176067da0d5%3A0xb3d69b5730908124!2sAtef%20Ajami%20Sons%20Company.AASCO!5e0!3m2!1sen!2s!4v1755534937816!5m2!1sen!2s"
@@ -66,17 +65,4 @@
 <Services />
 <data.Vedio />
 
-<section id="about" class="w-full py-12">
-	<div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 lg:grid-cols-2 lg:px-12">
-		<!-- Left: Logo & Info -->
-		<div class="flex flex-col items-center space-y-6 text-center lg:items-start lg:text-left">
-			<BrandName className="text-4xl" />
-			<h2 class="text-3xl font-bold">{m.visit()}</h2>
-		</div>
-
-		<!-- Right: Google Maps -->
-		<div class="h-80 overflow-hidden rounded-2xl lg:h-96">
-			<data.Map />
-		</div>
-	</div>
-</section>
+<About />
