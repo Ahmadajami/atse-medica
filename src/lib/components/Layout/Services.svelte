@@ -3,28 +3,33 @@
 	import { getLocale } from '$lib/paraglide/runtime';
 	import Sparkles from '@lucide/svelte/icons/sparkles';
 
+	import toothcorrection from '$lib/assets/tooth-correction.webp';
+	import implemant from '$lib/assets/dental-implants.webp';
+	import asthetic from '$lib/assets/aesthetic-dentistry.webp';
+	import dermatologist from '$lib/assets/skin-care.webp';
+
 	const services = [
 		{
 			title: 'Dental Implants',
-			image: 'https://mocha-cdn.com/01992458-6c51-7970-84a2-3148183d79e4/dental-implants.jpg',
+			image: implemant,
 			description: 'Permanent tooth replacement solutions with natural-looking results',
 			features: ['Titanium implants', 'Natural appearance', 'Long-lasting solution']
 		},
 		{
 			title: 'Aesthetic Dentistry',
-			image: 'https://mocha-cdn.com/01992458-6c51-7970-84a2-3148183d79e4/aesthetic-dentistry.jpg',
+			image: asthetic,
 			description: 'Professional teeth whitening and cosmetic treatments',
 			features: ['Teeth whitening', 'Veneers', 'Smile makeover']
 		},
 		{
 			title: 'Tooth Correction',
-			image: 'https://mocha-cdn.com/01992458-6c51-7970-84a2-3148183d79e4/tooth-correction.jpg',
+			image: toothcorrection,
 			description: 'Orthodontic treatments for perfect teeth alignment',
 			features: ['Traditional braces', 'Clear aligners', 'Bite correction']
 		},
 		{
 			title: 'Skin Care',
-			image: 'https://mocha-cdn.com/01992458-6c51-7970-84a2-3148183d79e4/skin-care.jpg',
+			image: dermatologist,
 			description: 'Advanced dermatological treatments for healthy skin',
 			features: ['Acne treatment', 'Anti-aging', 'Skin rejuvenation']
 		}
@@ -63,6 +68,12 @@
 		'Discover our comprehensive range of dental and dermatology services, designed to give you the confidence that comes with optimal health and beauty.';
 </script>
 
+<svelte:head>
+	<link rel="preload" href={toothcorrection} as="image" />
+	<link rel="preload" href={implemant} as="image" />
+	<link rel="preload" href={asthetic} as="image" />
+	<link rel="preload" href={dermatologist} as="image" />
+</svelte:head>
 <section id="services" class=" px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-16 text-center">
@@ -73,7 +84,7 @@
 				خدماتنا <span class="text-primary">الشاملة</span>
 			</h2>
 			<div class="bg-primary-600 mx-auto mb-6 h-1 w-32 rounded-full"></div>
-			<p class="mx-auto max-w-3xl text-xl text-gray-600">
+			<p class="mx-auto max-w-3xl text-xl">
 				{getLocale() == 'ar' ? servicesTagline : servicesTagline_en}
 			</p>
 		</div>

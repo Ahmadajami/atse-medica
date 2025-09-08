@@ -1,25 +1,11 @@
 <script lang="ts">
-	import { scrollY } from 'svelte/reactivity/window';
-	import { localizeHref, setLocale } from '$lib/paraglide/runtime';
 	import Globe from '@lucide/svelte/icons/globe';
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
 	import Hamburger from '$lib/components/Layout/Hamburger.svelte';
-	import { lenis, easeInOutCubic } from '$lib/lenis';
+	import { scrollY } from 'svelte/reactivity/window';
+	import { localizeHref, setLocale } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages';
-
-	function scrollToHash(e: MouseEvent) {
-		e.preventDefault();
-		if (!lenis) return;
-
-		const target = (e.currentTarget as HTMLAnchorElement).hash;
-		if (!target) return;
-
-		const el = document.querySelector<HTMLElement>(target);
-		if (el) {
-			lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
-			shy = true;
-		}
-	}
+	import { easeInOutCubic, lenis } from '$lib/lenis';
 
 	let lastScrollY = $state(0);
 	let shy = $state(false);
@@ -31,6 +17,21 @@
 			lastScrollY = scrollY.current!;
 		}
 	};
+
+	function scrollToHash(e: MouseEvent) {
+		e.preventDefault();
+
+		const target = (e.currentTarget as HTMLAnchorElement).hash;
+		if (!target) return;
+
+		const el = document.querySelector<HTMLElement>(target);
+		if (el) {
+			if (lenis) {
+				lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
+				shy = true;
+			}
+		}
+	}
 </script>
 
 <svelte:window onscroll={handleScroll} />

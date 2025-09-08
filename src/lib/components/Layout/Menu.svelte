@@ -5,6 +5,7 @@
 	import { getNavState, toggleNavState, CloseNavState } from '../navstate.svelte';
 	import Globe from '@lucide/svelte/icons/globe';
 
+	
 
 	function scrollToHash(e: MouseEvent) {
 		e.preventDefault();

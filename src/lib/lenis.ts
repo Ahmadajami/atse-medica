@@ -1,18 +1,28 @@
 // src/lib/lenis.ts
-import { browser } from '$app/environment';
+
 import Lenis from 'lenis';
 
 // Type the lenis instance
-let lenis: Lenis | null = null;
+export let lenis: Lenis | null = null;
 
-if (browser) {
-	lenis = new Lenis({
-		duration: 1,
-		autoRaf: true,
-		lerp: 0.3,
-		syncTouch: false,
-		touchMultiplier: 1.8
-	});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function scrollLenis(node: HTMLElement) {
+	if (!lenis) {
+		lenis = new Lenis({
+			smoothWheel: true,
+			duration: 1,
+			autoRaf: true,
+			lerp: 0.3,
+			syncTouch: false,
+			touchMultiplier: 1.8
+		});
+	}
+	return {
+		destroy() {
+			lenis?.destroy();
+			lenis = null;
+		}
+	};
 }
 
 // Add types to easing functions
@@ -29,4 +39,12 @@ const easeExpoInOut = (t: number): number => {
 	return (2 - Math.pow(2, -20 * t + 10)) / 2;
 };
 
-export { lenis, easeInOutCubic, easeExpoInOut };
+export { easeInOutCubic, easeExpoInOut };
+
+/*lenis=new Lenis({
+	duration: 1,
+	autoRaf: true,
+	lerp: 0.3,
+	syncTouch: false,
+	touchMultiplier: 1.8
+});*/

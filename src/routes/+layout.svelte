@@ -6,17 +6,12 @@
 	import { getNavState } from '$lib/components/navstate.svelte';
 	import Menu from '$lib/components/Layout/Menu.svelte';
 	import Navbar from '$lib/components/Layout/Navbar.svelte';
-	import { getLocale } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages';
-	import { onDestroy } from 'svelte';
-	import { lenis } from '$lib/lenis';
 	import Footer from '$lib/components/Layout/footer.svelte';
+	import { scrollLenis } from '$lib/lenis';
 
-	let isArabic = $state(getLocale() === 'ar');
+
 	let { children } = $props();
-	onDestroy(() => {
-		if (lenis) lenis.destroy();
-	});
 </script>
 
 <svelte:head>
@@ -42,7 +37,7 @@
 
 	<Menu />
 
-	<div>
+	<div use:scrollLenis>
 		<main
 			class:translate-x-full={getNavState()}
 			class="pt-20 transition-transform duration-1000 ease-in-out"
@@ -53,7 +48,7 @@
 	</div>
 </div>
 
-<Footer/>
+<Footer />
 
 <style>
 	:global(body) {
