@@ -64,67 +64,68 @@
 </script>
 
 <section id="services" class=" px-4 py-20 sm:px-6 lg:px-8">
-	<div class="mx-auto max-w-7xl">
-		<div class="mb-16 text-center">
-			<h2 class="mb-4 text-4xl font-bold md:text-5xl rtl:hidden">
-				{m.tiny_polite_vole_mop()} <span class="text-primary">{m.services()}</span>
-			</h2>
-			<h2 class="mb-4 text-4xl font-bold md:text-5xl ltr:hidden">
-				خدماتنا <span class="text-primary">الشاملة</span>
-			</h2>
-			<div class="bg-primary-600 mx-auto mb-6 h-1 w-32 rounded-full"></div>
-			<p class="mx-auto max-w-3xl text-xl text-gray-600">
-				{getLocale() == 'ar' ? servicesTagline : servicesTagline_en}
-			</p>
-		</div>
+        <div class="mx-auto max-w-7xl">
+                <div class="mb-16 text-center">
+                        <h2 class="mb-4 text-4xl font-bold md:text-5xl rtl:hidden">
+                                {m.tiny_polite_vole_mop()} <span class="text-primary">{m.services()}</span>
+                        </h2>
+                        <h2 class="mb-4 text-4xl font-bold md:text-5xl ltr:hidden">
+                                خدماتنا <span class="text-primary">الشاملة</span>
+                        </h2>
+                        <div class="bg-primary-600 mx-auto mb-6 h-1 w-32 rounded-full"></div>
+                        <p class="mx-auto max-w-3xl text-xl text-gray-600">
+                                {getLocale() == 'ar' ? servicesTagline : servicesTagline_en}
+                        </p>
+                </div>
 
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-			{#each getLocale() == 'ar' ? services_ar : services as service, index (service.title)}
-				<div
-					class={`group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl  active:-translate-y-2 active:shadow-2xl `}
-				>
-					<div class="relative h-80 overflow-hidden">
-						<img
-							src={service.image}
-							alt={service.title}
-							class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-						/>
-						<div
-							class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
-						></div>
-					</div>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                        {#each getLocale() == 'ar' ? services_ar : services as service, index (service.title)}
+                                <div
+                                        class={`group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl  active:-translate-y-2 active:shadow-2xl `}
+                                >
+                                        <div class="relative h-80 overflow-hidden">
+                                                <img
+                                                        src={service.image}
+                                                        alt={service.title}
+                                                        class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 group-active:scale-110"
+                                                />
+                                                <div
+                                                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
+                                                ></div>
+                                        </div>
 
-					<div
-						class="absolute inset-0 flex flex-col justify-end p-6 text-left text-white rtl:text-right"
-					>
-						<div class="mb-3 flex items-center space-x-3 rtl:space-x-reverse">
-							<Sparkles class="text-primary-400 h-6 w-6" />
-							<h3 class="text-2xl font-bold">{service.title}</h3>
-						</div>
+                                        <div
+                                                class="absolute inset-0 flex flex-col justify-end p-6 text-left text-white rtl:text-right"
+                                        >
+                                                <div class="mb-3 flex items-center space-x-3 rtl:space-x-reverse">
+                                                        <Sparkles class="text-primary-400 h-6 w-6" />
+                                                        <h3 class="text-2xl font-bold">{service.title}</h3>
+                                                </div>
 
-						<p
-							class="mb-4 leading-relaxed text-gray-200 opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100"
-						>
-							{service.description}
-						</p>
+                                                <p
+                                                        class="mb-4 leading-relaxed text-gray-200 opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100 group-active:opacity-100"
+                                                >
+                                                        {service.description}
+                                                </p>
 
-						<ul
-							class="space-y-2 opacity-0 transition-opacity delay-200 duration-500 group-hover:opacity-100"
-						>
-							{#each service.features as feature}
-								<li class="flex items-center space-x-2 text-sm text-gray-300 rtl:space-x-reverse">
-									<div class="bg-primary-400 h-1.5 w-1.5 flex-shrink-0 rounded-full"></div>
-									<span>{feature}</span>
-								</li>
-							{/each}
-						</ul>
-					</div>
+                                                <ul
+                                                        class="space-y-2 opacity-0 transition-opacity delay-200 duration-500 group-hover:opacity-100 group-active:opacity-100"
+                                                >
+                                                        {#each service.features as feature}
+                                                                <li class="flex items-center space-x-2 text-sm text-gray-300 rtl:space-x-reverse">
+                                                                        <div class="bg-primary-400 h-1.5 w-1.5 flex-shrink-0 rounded-full"></div>
+                                                                        <span>{feature}</span>
+                                                                </li>
+                                                        {/each}
+                                                </ul>
+                                        </div>
 
-					<div
-						class="border-primary-500 absolute inset-0 rounded-2xl border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-					></div>
-				</div>
-			{/each}
-		</div>
-	</div>
+                                        <div
+                                                class="border-primary-500 absolute inset-0 rounded-2xl border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100"
+                                        ></div>
+                                </div>
+                        {/each}
+                </div>
+        </div>
 </section>
+
