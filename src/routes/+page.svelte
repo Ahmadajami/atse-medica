@@ -9,6 +9,7 @@
 	import dermatologist from '$lib/assets/dermatologist.webp';
 
 	import { m } from '$lib/paraglide/messages';
+	import Services from '$lib/components/Layout/Services.svelte';
 	// è is È.
 	let { data } = $props();
 </script>
@@ -68,62 +69,7 @@
 	</div>
 </section>
 
-<section id="services" class="mx-auto flex max-w-7xl transform-gpu flex-col space-y-8">
-	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 rtl:hidden">
-		{m.tiny_polite_vole_mop()} <span class="text-primary">{m.services()}</span>
-		<hr class="w-full bg-primary" />
-	</h2>
-
-	<h2 class="mx-4 w-fit text-5xl font-semibold text-wrap md:mx-0 ltr:hidden">
-		خدماتنا <span class="text-primary">الشاملة</span>
-		<hr class="w-full bg-primary" />
-	</h2>
-	<div class="grid grid-cols-1 grid-rows-2 gap-7 px-8 md:grid-cols-2">
-		<div
-			class="relative h-48 w-full rounded-lg bg-cover bg-center"
-			style="background-image: url('{implemant}');"
-		>
-			<div
-				class=" absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
-			>
-				{m.implants()}
-			</div>
-		</div>
-
-		<div
-			class="relative h-48 w-full translate-x-4 rounded-lg bg-cover bg-center md:mt-[40px]"
-			style="background-image: url('{asthetic}');"
-		>
-			<div
-				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
-			>
-				{m.asthetic()}
-			</div>
-		</div>
-
-		<div
-			class="relative h-48 w-full rounded-lg bg-cover bg-center"
-			style="background-image: url('{dental}');"
-		>
-			<div
-				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
-			>
-				{m.tooth_correction()}
-			</div>
-		</div>
-
-		<div
-			class="relative h-48 w-full -translate-x-4 rounded-lg bg-cover bg-center md:mt-[40px] md:translate-x-0"
-			style="background-image: url('{dermatologist}');"
-		>
-			<div
-				class="bg-opacity-30 absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 text-xl font-bold text-white"
-			>
-				{m.skin_care()}
-			</div>
-		</div>
-	</div>
-</section>
+<Services />
 <data.Vedio />
 
 <section id="about" class="w-full py-12">

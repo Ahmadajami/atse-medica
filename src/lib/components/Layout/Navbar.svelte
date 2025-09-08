@@ -3,11 +3,8 @@
 	import { localizeHref, setLocale } from '$lib/paraglide/runtime';
 	import Globe from '@lucide/svelte/icons/globe';
 	import BrandName from '$lib/components/Layout/BrandName.svelte';
-
 	import Hamburger from '$lib/components/Layout/Hamburger.svelte';
-
 	import { lenis, easeInOutCubic } from '$lib/lenis';
-	import { onDestroy } from 'svelte';
 	import { m } from '$lib/paraglide/messages';
 
 	function scrollToHash(e: MouseEvent) {
@@ -34,9 +31,6 @@
 			lastScrollY = scrollY.current!;
 		}
 	};
-	onDestroy(() => {
-		if (lenis) lenis.destroy();
-	});
 </script>
 
 <svelte:window onscroll={handleScroll} />

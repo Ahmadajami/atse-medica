@@ -10,6 +10,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { onDestroy } from 'svelte';
 	import { lenis } from '$lib/lenis';
+	import Footer from '$lib/components/Layout/footer.svelte';
 
 	let isArabic = $state(getLocale() === 'ar');
 	let { children } = $props();
@@ -52,7 +53,7 @@
 	</div>
 </div>
 
-<section id="footer"></section>
+<Footer/>
 
 <style>
 	:global(body) {
