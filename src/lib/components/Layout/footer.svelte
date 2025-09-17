@@ -116,7 +116,7 @@
 	</footer>
 {/snippet}
 {#snippet n_footer()}
-	<footer class="bg-primary/60 text-white">
+	<footer id="contact" class="bg-primary/60 text-white">
 		<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 			<div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4 lg:gap-24">
 				<div class="col-span-1 md:col-span-2">
@@ -185,9 +185,23 @@
 				<div class="sm:col-span-1">
 					<h4 class="text-lg font-semibold text-gray-200">Contact Info</h4>
 					<div class="mt-4 space-y-3 text-gray-400">
-						<p>{getLocale() === 'ar' ? 'دمشق,سوريا' : 'Damascus, Syria'}</p>
-						<p>+963 XXX XXX XXX</p>
-						<p>info@atsemedica.com</p>
+						<p>{getLocale() === 'ar' ? ' دمشق,سوريا البرامكة مقابل مغسل الأمين' : 'Alabaramkeh in Front of Alameen Car Wash,Damascus, Syria'}</p>
+						<p>
+							<a
+								href="tel:+963968500077"
+								class="block hover:underline focus:underline active:underline"
+							>
+								+963 968 500 077
+							</a>
+						</p>
+						<p>
+							<a
+								href="tel:+963968500077"
+								class="block hover:underline focus:underline active:underline"
+							>
+								+963 968 500 077
+							</a>
+						</p>
 					</div>
 				</div>
 			</div>

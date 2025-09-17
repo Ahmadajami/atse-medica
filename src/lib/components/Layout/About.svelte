@@ -14,7 +14,7 @@
 		doctorName: 'Dr. Mohammed Saeed Alajami',
 		doctorTitle: 'Lead Specialist - Dental & Dermatology',
 		doctorDescription:
-			'Board-certified specialist with extensive experience in cosmetic dentistry and advanced dermatological treatments. Committed to providing personalized care and exceptional results.'
+			'Board-certified specialist with extensive experience in cosmetic dentistry , Committed to providing personalized care and exceptional results.'
 	};
 
 	// New array for info cards
@@ -22,22 +22,22 @@
 		{
 			icon: MapPin,
 			title: 'Location',
-			value: 'Damascus, Syria\nPremium Medical District'
+			value: 'Alabaramkeh in Front of Alameen Car Wash,Damascus, Syria'
 		},
 		{
 			icon: Clock,
 			title: 'Hours',
-			value: 'Mon-Fri: 9:00 AM - 6:00 PM\nSat: 9:00 AM - 2:00 PM'
+			value: 'Sat: 9:00 AM - 6:00 PM \nThs: 9:00 AM - 6:00 PM\n'
 		},
 		{
 			icon: Phone,
 			title: 'Contact',
-			value: '+963 XXX XXX XXX\ninfo@atsemedica.com'
+			value: '+963 968 500 077\ninfo@atsemedica.com'
 		},
 		{
 			icon: Award,
 			title: 'Experience',
-			value: '15+ Years of Excellence\n1000+ Happy Patients'
+			value: '3+ Years of Excellence\n150+ Happy Patients'
 		}
 	];
 
@@ -107,7 +107,21 @@
 									<h4 class="font-semibold">{card.title}</h4>
 								</div>
 								<p class="text-sm whitespace-pre-line" dir={idx === 2 ? 'ltr' : 'auto'}>
-									{card.value}
+									{#if card.title === 'Contact' || card.title === 'للتواصل'}
+										<a
+											href="tel:+963968500077"
+											class="block hover:underline focus:underline active:underline"
+										>
+											+963 968 500 077
+										</a>
+										<a
+											href="mailto:info@atsemedica.com"
+											class="block hover:underline focus:underline active:underline"
+											>info@atsemedica.com</a
+										>
+									{:else}
+										{card.value}
+									{/if}
 								</p>
 							</div>
 						{/each}

@@ -5,8 +5,6 @@
 	import { getNavState, toggleNavState, CloseNavState } from '../navstate.svelte';
 	import Globe from '@lucide/svelte/icons/globe';
 
-	
-
 	function scrollToHash(e: MouseEvent) {
 		e.preventDefault();
 		if (!lenis) return;
@@ -16,6 +14,7 @@
 
 		const el = document.querySelector<HTMLElement>(target);
 		if (el) {
+			
 			CloseNavState();
 			setTimeout(() => {
 				if (lenis) lenis.scrollTo(el, { duration: 2, easing: easeInOutCubic });
@@ -33,7 +32,7 @@
 >
 	<!-- Fullscreen Nav Links -->
 	<nav class="flex h-full w-full flex-col items-center justify-center space-y-8 text-2xl font-bold">
-		<a href="/#home" class="transition hover:text-primary" onclick={scrollToHash}>{m.home()}</a>
+		<a href="/#hero" class="transition hover:text-primary" onclick={scrollToHash}>{m.home()}</a>
 		<a href="/#about" class="transition hover:text-primary" onclick={scrollToHash}>{m.about()}</a>
 		<a href="/#services" class="transition hover:text-primary" onclick={scrollToHash}
 			>{m.services()}</a
